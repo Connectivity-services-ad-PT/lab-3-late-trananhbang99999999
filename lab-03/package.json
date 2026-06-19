@@ -1,0 +1,13 @@
+{
+  "name": "fit4110-lab03-ai-vision-testing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FIT4110 Lab 03 Postman & Mock Testing - Team A4 AI Vision",
+  "scripts": {
+    "check": "node --version && npm --version",
+    "install:cli": "npm install -g @stoplight/spectral-cli@6.11.1 @stoplight/prism-cli@5.14.2 newman newman-reporter-htmlextra",
+    "lint": "spectral lint contracts/ai-vision.openapi.yaml",
+    "mock:vision": "prism mock contracts/ai-vision.openapi.yaml --port 4011",
+    "test:mock": "newman run postman/collections/FIT4110_lab03_ai_vision.postman_collection.json -e postman/environments/FIT4110_lab03_mock.postman_environment.json -r cli,junit,htmlextra --reporter-junit-export reports/newman-report.xml --reporter-htmlextra-export reports/newman-report.html"
+  }
+}

@@ -2,12 +2,19 @@ openapi: 3.0.3
 info:
   title: Smart Campus - AI Vision Service API
   version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
 servers:
   - url: http://localhost:4010
 paths:
   /vision/detect:
     post:
+      tags:
+        - Vision
       summary: Detect image
+      operationId: detectImage
+      description: Send an image for AI-based detection.
       requestBody:
         required: true
         content:
@@ -34,7 +41,11 @@ paths:
         '422': { description: "Unprocessable Entity" }
   /access/check:
     post:
+      tags:
+        - Health
       summary: Smoke test connection
+      operationId: checkAccess
+      description: Check if the service is reachable.
       responses:
         '200':
           description: OK

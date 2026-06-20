@@ -1,0 +1,67 @@
+{
+	"info": {
+		"name": "FIT4110_lab03_ai_vision",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01_Functional",
+			"item": [
+				{
+					"name": "Detect person",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"imageType\": \"person\", \"rawData\": \"data_base64\"}"
+						},
+						"url": { "raw": "{{baseUrl}}/vision/detect", "host": ["{{baseUrl}}"], "path": ["vision", "detect"] }
+					}
+				},
+				{
+					"name": "Detect vehicle",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"imageType\": \"vehicle\", \"rawData\": \"data_base64\"}"
+						},
+						"url": { "raw": "{{baseUrl}}/vision/detect", "host": ["{{baseUrl}}"], "path": ["vision", "detect"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "02_Validation",
+			"item": [
+				{
+					"name": "Invalid image type",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"imageType\": \"invalid_type\", \"rawData\": \"data_base64\"}"
+						},
+						"url": { "raw": "{{baseUrl}}/vision/detect", "host": ["{{baseUrl}}"], "path": ["vision", "detect"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "05_Consumer_side_Smoke",
+			"item": [
+				{
+					"name": "Smoke Test",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "{{baseUrl}}/access/check", "host": ["{{baseUrl}}"], "path": ["access", "check"] }
+					}
+				}
+			]
+		}
+	]
+}

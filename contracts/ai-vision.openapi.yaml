@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Smart Campus - AI Vision Service API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4010
+paths:
+  /vision/detect:
+    post:
+      summary: Detect image
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [imageType, rawData]
+              properties:
+                imageType: { type: string }
+                rawData: { type: string }
+                confidenceThreshold: { type: number }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  predictions: { type: array, items: { type: object } }
+                  modelVersion: { type: string, example: "v1" }
+        '400': { description: "Bad Request" }
+        '401': { description: "Unauthorized" }
+        '422': { description: "Unprocessable Entity" }
+  /access/check:
+    post:
+      summary: Smoke test connection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: "ok" }

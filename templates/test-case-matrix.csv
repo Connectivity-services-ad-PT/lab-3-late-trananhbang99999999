@@ -1,0 +1,6 @@
+Test Case ID,Endpoint,Method,Folder,Input/Payload,Expected Status,Test Type,Assertion Goal
+TC-001,/vision/detect,POST,01_Functional,Valid image URL & confidenceThreshold,200,Happy Path,Verify predictions array & modelVersion exist
+TC-002,/vision/detect,POST,02_Auth,Missing Authorization Bearer token,401/403,Security,Ensure unauthorized access is blocked
+TC-003,/vision/detect,POST,03_Negative,Missing required field imageType,400/422,Validation Error,Verify ProblemDetails structure compliance
+TC-004,/vision/detect,POST,04_Boundary_Reliability,confidenceThreshold out of bounds (1.5),400/422,Boundary,Verify upper bound input validation enforcement
+TC-005,/access/check,POST,05_Consumer_side_Smoke,Mock Core Business connection payload,200/201,Integration Smoke,Verify consumer handshake capability with dependency mock
